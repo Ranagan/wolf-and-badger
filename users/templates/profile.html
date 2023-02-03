@@ -1,0 +1,37 @@
+{% load socialaccount %}
+<html>
+    <head>
+        <style>
+        h3 {text-align: center;}
+        p {text-align: center;}
+        </style>
+    </head>
+    <body>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+        <nav>
+            <div class="nav-wrapper"style="background-color: teal">
+              <a href="#" class="brand-logo">User Profile</a>
+            </div>
+          </nav>
+        <h3 style="center">User Profile</h3>
+        <div class="center">
+            <div class="col s12 m6">
+              <div class="card whitedarken-1">
+                <div class="card-content blue-text">
+                    {% if user.is_authenticated%}
+                        <a href="{% url 'account_logout' %}"><span class="card-title">Logout</span></a>
+                    {%else%}
+                        <a href="{% url 'github_login' %}"><span class="card-title">Sign In</span></a>
+                    {%endif%}
+                  <p>{{ user.username }}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>
